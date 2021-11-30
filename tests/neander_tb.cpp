@@ -1,28 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////
-//
-// Filename: 	helloworld_tb.cpp
-//
-// Project:	Verilog Tutorial Example file
-//
-// Purpose:	To demonstrate a Verilog main() program that calls a local
-//		serial port co-simulator.
-//
-// Creator:	Dan Gisselquist, Ph.D.
-//		Gisselquist Technology, LLC
-//
-////////////////////////////////////////////////////////////////////////////////
-//
-// Written and distributed by Gisselquist Technology, LLC
-//
-// This program is hereby granted to the public domain.
-//
-// This program is distributed in the hope that it will be useful, but WITHOUT
-// ANY WARRANTY; without even the implied warranty of MERCHANTIBILITY or
-// FITNESS FOR A PARTICULAR PURPOSE.
-//
-////////////////////////////////////////////////////////////////////////////////
-//
-//
 #include <verilatedos.h>
 #include <iostream>
 #include <memory>
