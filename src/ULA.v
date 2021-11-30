@@ -32,7 +32,7 @@ module ULA (
             ADD: o_OUT = i_A + i_B; // ADD
             OR:  o_OUT = i_A | i_B; // OR
             AND: o_OUT = i_A & i_B; // AND
-            NOT: o_OUT = ~i_B; // NOT
+            NOT: o_OUT = ~i_A; // NOT
 
             default: o_OUT = i_B; // ELSE
         endcase

@@ -108,44 +108,49 @@ module neander (
             RI <= RDM;
         end
 
-        case (STATE)
-            3'd0: begin
-                STATE <= 1;
-            end
-            3'd1: begin
-                STATE <= 2;
-            end
-            3'd2: begin
-                STATE <= 3;
-            end
-            3'd3: begin
-                if(RI == OP_NOT) begin
-                    STATE <= 0;
-                end else begin
-                    if(((RI == OP_JN) && ~N) | ((RI == OP_JZ) &&  ~Z)) begin
+        if (!i_rst) begin
+
+            case (STATE)
+                3'd0: begin
+                    STATE <= 1;
+                end
+                3'd1: begin
+                    STATE <= 2;
+                end
+                3'd2: begin
+                    STATE <= 3;
+                end
+                3'd3: begin
+                    if(RI == OP_NOT) begin
                         STATE <= 0;
                     end else begin
-                        STATE <= 4;
+                        if(((RI == OP_JN) && ~N) | ((RI == OP_JZ) &&  ~Z) | RI == OP_HLT) begin
+                            STATE <= 0;
+                        end else begin
+                            STATE <= 4;
+                        end
                     end
                 end
-            end
-            3'd4: begin
-                STATE <= 5;
-            end
-            3'd5: begin
-                if ((RI == OP_JMP) | (RI == OP_JN) | (RI == OP_JZ)) begin
-                    STATE <= 0;
-                end else begin
-                    STATE <= 6;
+                3'd4: begin
+                    STATE <= 5;
                 end
-            end
-            3'd6: begin
-                STATE <= 7;
-            end
-            3'd7: begin
-                STATE <= 0;
-            end
-        endcase
+                3'd5: begin
+                    if ((RI == OP_JMP) | (RI == OP_JN) | (RI == OP_JZ)) begin
+                        STATE <= 0;
+                    end else begin
+                        STATE <= 6;
+                    end
+                end
+                3'd6: begin
+                    STATE <= 7;
+                end
+                3'd7: begin
+                    STATE <= 0;
+                end
+            endcase
+        end else begin
+            STATE <= 0;
+        end
     end
 
     always @(STATE) begin

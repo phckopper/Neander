@@ -75,6 +75,7 @@ VL_INLINE_OPT void Vneander::_sequent__TOP__1(Vneander__Syms* __restrict vlSymsp
     CData/*0:0*/ __Vdlyvset__neander__DOT__memory__v0;
     CData/*7:0*/ __Vdly__neander__DOT__REM;
     CData/*7:0*/ __Vdly__neander__DOT__PC__DOT__internal_PC;
+    CData/*31:0*/ __Vtemp1;
     // Body
     __Vdly__neander__DOT__PC__DOT__internal_PC = vlTOPp->neander__DOT__PC__DOT__internal_PC;
     __Vdlyvset__neander__DOT__memory__v0 = 0U;
@@ -97,35 +98,57 @@ VL_INLINE_OPT void Vneander::_sequent__TOP__1(Vneander__Syms* __restrict vlSymsp
         __Vdlyvset__neander__DOT__memory__v0 = 1U;
         __Vdlyvdim0__neander__DOT__memory__v0 = vlTOPp->neander__DOT__REM;
     }
-    vlTOPp->neander__DOT__STATE = ((4U & (IData)(vlTOPp->neander__DOT__STATE))
-                                    ? ((2U & (IData)(vlTOPp->neander__DOT__STATE))
-                                        ? ((1U & (IData)(vlTOPp->neander__DOT__STATE))
-                                            ? 0U : 7U)
-                                        : ((1U & (IData)(vlTOPp->neander__DOT__STATE))
-                                            ? ((((8U 
-                                                  == (IData)(vlTOPp->neander__DOT__RI)) 
-                                                 | (9U 
-                                                    == (IData)(vlTOPp->neander__DOT__RI))) 
-                                                | (0xaU 
-                                                   == (IData)(vlTOPp->neander__DOT__RI)))
-                                                ? 0U
-                                                : 6U)
-                                            : 5U)) : 
-                                   ((2U & (IData)(vlTOPp->neander__DOT__STATE))
-                                     ? ((1U & (IData)(vlTOPp->neander__DOT__STATE))
-                                         ? ((6U == (IData)(vlTOPp->neander__DOT__RI))
-                                             ? 0U : 
-                                            ((((9U 
-                                                == (IData)(vlTOPp->neander__DOT__RI)) 
-                                               & (~ (IData)(vlTOPp->neander__DOT__N))) 
-                                              | ((0xaU 
-                                                  == (IData)(vlTOPp->neander__DOT__RI)) 
-                                                 & (~ (IData)(vlTOPp->neander__DOT__Z))))
-                                              ? 0U : 4U))
-                                         : 3U) : ((1U 
-                                                   & (IData)(vlTOPp->neander__DOT__STATE))
-                                                   ? 2U
-                                                   : 1U)));
+    __Vtemp1 = ((IData)(vlTOPp->i_rst) ? 0U : ((4U 
+                                                & (IData)(vlTOPp->neander__DOT__STATE))
+                                                ? (
+                                                   (2U 
+                                                    & (IData)(vlTOPp->neander__DOT__STATE))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(vlTOPp->neander__DOT__STATE))
+                                                     ? 0U
+                                                     : 7U)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(vlTOPp->neander__DOT__STATE))
+                                                     ? 
+                                                    ((((8U 
+                                                        == (IData)(vlTOPp->neander__DOT__RI)) 
+                                                       | (9U 
+                                                          == (IData)(vlTOPp->neander__DOT__RI))) 
+                                                      | (0xaU 
+                                                         == (IData)(vlTOPp->neander__DOT__RI)))
+                                                      ? 0U
+                                                      : 6U)
+                                                     : 5U))
+                                                : (
+                                                   (2U 
+                                                    & (IData)(vlTOPp->neander__DOT__STATE))
+                                                    ? 
+                                                   ((1U 
+                                                     & (IData)(vlTOPp->neander__DOT__STATE))
+                                                     ? 
+                                                    ((6U 
+                                                      == (IData)(vlTOPp->neander__DOT__RI))
+                                                      ? 0U
+                                                      : 
+                                                     (((((9U 
+                                                          == (IData)(vlTOPp->neander__DOT__RI)) 
+                                                         & (~ (IData)(vlTOPp->neander__DOT__N))) 
+                                                        | ((0xaU 
+                                                            == (IData)(vlTOPp->neander__DOT__RI)) 
+                                                           & (~ (IData)(vlTOPp->neander__DOT__Z)))) 
+                                                       | (0xfU 
+                                                          == (IData)(vlTOPp->neander__DOT__RI)))
+                                                       ? 0U
+                                                       : 4U))
+                                                     : 3U)
+                                                    : 
+                                                   ((1U 
+                                                     & (IData)(vlTOPp->neander__DOT__STATE))
+                                                     ? 2U
+                                                     : 1U))));
+    vlTOPp->neander__DOT__STATE = __Vtemp1;
     if (vlTOPp->neander__DOT__cargaNZ) {
         vlTOPp->neander__DOT__N = vlTOPp->neander__DOT__ULA_N;
     }
@@ -395,7 +418,7 @@ VL_INLINE_OPT void Vneander::_sequent__TOP__1(Vneander__Syms* __restrict vlSymsp
                                                     & (IData)(vlTOPp->neander__DOT__ULA_SEL))
                                                     ? (IData)(vlTOPp->neander__DOT__RDM)
                                                     : 
-                                                   (~ (IData)(vlTOPp->neander__DOT__RDM)))
+                                                   (~ (IData)(vlTOPp->neander__DOT__ACC)))
                                                    : 
                                                   ((1U 
                                                     & (IData)(vlTOPp->neander__DOT__ULA_SEL))

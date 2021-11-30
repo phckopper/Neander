@@ -267,7 +267,7 @@ void Vneander::_settle__TOP__2(Vneander__Syms* __restrict vlSymsp) {
                                                     & (IData)(vlTOPp->neander__DOT__ULA_SEL))
                                                     ? (IData)(vlTOPp->neander__DOT__RDM)
                                                     : 
-                                                   (~ (IData)(vlTOPp->neander__DOT__RDM)))
+                                                   (~ (IData)(vlTOPp->neander__DOT__ACC)))
                                                    : 
                                                   ((1U 
                                                     & (IData)(vlTOPp->neander__DOT__ULA_SEL))
