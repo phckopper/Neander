@@ -43,14 +43,11 @@ void Vneander::traceChgSub0(void* userp, VerilatedVcd* tracep) {
             tracep->chgBit(oldp+17,(vlTOPp->neander__DOT__Z));
             tracep->chgCData(oldp+18,(vlTOPp->neander__DOT__STATE),3);
             tracep->chgCData(oldp+19,(vlTOPp->neander__DOT__PC__DOT__internal_PC),8);
-            tracep->chgCData(oldp+20,(vlTOPp->neander__DOT__cargaPC_val),8);
-            tracep->chgBit(oldp+21,(vlTOPp->neander__DOT__cargaPC));
-            tracep->chgBit(oldp+22,(vlTOPp->neander__DOT__incrementaPC));
-            tracep->chgBit(oldp+23,((1U & ((IData)(vlTOPp->neander__DOT__RI) 
-                                           >> 3U))));
+            tracep->chgBit(oldp+20,(vlTOPp->neander__DOT__cargaPC));
+            tracep->chgBit(oldp+21,(vlTOPp->neander__DOT__incrementaPC));
         }
-        tracep->chgBit(oldp+24,(vlTOPp->i_clk));
-        tracep->chgBit(oldp+25,(vlTOPp->i_rst));
+        tracep->chgBit(oldp+22,(vlTOPp->i_clk));
+        tracep->chgBit(oldp+23,(vlTOPp->i_rst));
     }
 }
 

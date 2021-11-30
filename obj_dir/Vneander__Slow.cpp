@@ -79,7 +79,9 @@ void Vneander::_settle__TOP__2(Vneander__Syms* __restrict vlSymsp) {
         if ((1U & (~ ((IData)(vlTOPp->neander__DOT__STATE) 
                       >> 1U)))) {
             if ((1U & (IData)(vlTOPp->neander__DOT__STATE))) {
-                if ((8U & (IData)(vlTOPp->neander__DOT__RI))) {
+                if ((((8U == (IData)(vlTOPp->neander__DOT__RI)) 
+                      | (9U == (IData)(vlTOPp->neander__DOT__RI))) 
+                     | (0xaU == (IData)(vlTOPp->neander__DOT__RI)))) {
                     vlTOPp->neander__DOT__cargaPC = 1U;
                 }
             }
@@ -99,8 +101,9 @@ void Vneander::_settle__TOP__2(Vneander__Syms* __restrict vlSymsp) {
             }
         } else {
             if ((1U & (IData)(vlTOPp->neander__DOT__STATE))) {
-                if ((1U & (~ ((IData)(vlTOPp->neander__DOT__RI) 
-                              >> 3U)))) {
+                if ((1U & (~ (((8U == (IData)(vlTOPp->neander__DOT__RI)) 
+                               | (9U == (IData)(vlTOPp->neander__DOT__RI))) 
+                              | (0xaU == (IData)(vlTOPp->neander__DOT__RI)))))) {
                     vlTOPp->neander__DOT__cargaREM = 1U;
                 }
             } else {
@@ -127,14 +130,15 @@ void Vneander::_settle__TOP__2(Vneander__Syms* __restrict vlSymsp) {
     if ((4U & (IData)(vlTOPp->neander__DOT__STATE))) {
         if ((1U & (~ ((IData)(vlTOPp->neander__DOT__STATE) 
                       >> 1U)))) {
-            if ((1U & (IData)(vlTOPp->neander__DOT__STATE))) {
-                vlTOPp->neander__DOT__incrementaPC = 0U;
-            } else {
-                if ((1U & (~ ((IData)(vlTOPp->neander__DOT__RI) 
-                              >> 3U)))) {
-                    vlTOPp->neander__DOT__incrementaPC = 1U;
-                }
-            }
+            vlTOPp->neander__DOT__incrementaPC = (1U 
+                                                  & ((~ (IData)(vlTOPp->neander__DOT__STATE)) 
+                                                     & (~ 
+                                                        (((8U 
+                                                           == (IData)(vlTOPp->neander__DOT__RI)) 
+                                                          | (9U 
+                                                             == (IData)(vlTOPp->neander__DOT__RI))) 
+                                                         | (0xaU 
+                                                            == (IData)(vlTOPp->neander__DOT__RI))))));
         }
     } else {
         if ((2U & (IData)(vlTOPp->neander__DOT__STATE))) {
@@ -159,8 +163,9 @@ void Vneander::_settle__TOP__2(Vneander__Syms* __restrict vlSymsp) {
         if ((1U & (~ ((IData)(vlTOPp->neander__DOT__STATE) 
                       >> 1U)))) {
             if ((1U & (IData)(vlTOPp->neander__DOT__STATE))) {
-                if ((1U & (~ ((IData)(vlTOPp->neander__DOT__RI) 
-                              >> 3U)))) {
+                if ((1U & (~ (((8U == (IData)(vlTOPp->neander__DOT__RI)) 
+                               | (9U == (IData)(vlTOPp->neander__DOT__RI))) 
+                              | (0xaU == (IData)(vlTOPp->neander__DOT__RI)))))) {
                     vlTOPp->neander__DOT__SEL = 1U;
                 }
             }
@@ -224,7 +229,9 @@ void Vneander::_settle__TOP__2(Vneander__Syms* __restrict vlSymsp) {
     }
     if ((4U & (IData)(vlTOPp->neander__DOT__STATE))) {
         if ((2U & (IData)(vlTOPp->neander__DOT__STATE))) {
-            if ((1U & (~ (IData)(vlTOPp->neander__DOT__STATE)))) {
+            if ((1U & (IData)(vlTOPp->neander__DOT__STATE))) {
+                vlTOPp->neander__DOT__cargaRDM = 0U;
+            } else {
                 if ((1U == (IData)(vlTOPp->neander__DOT__RI))) {
                     vlTOPp->neander__DOT__cargaRDM = 1U;
                 }
@@ -332,7 +339,6 @@ void Vneander::_ctor_var_reset() {
     neander__DOT__N = VL_RAND_RESET_I(1);
     neander__DOT__Z = VL_RAND_RESET_I(1);
     neander__DOT__STATE = VL_RAND_RESET_I(3);
-    neander__DOT__cargaPC_val = VL_RAND_RESET_I(8);
     neander__DOT__cargaPC = VL_RAND_RESET_I(1);
     neander__DOT__incrementaPC = VL_RAND_RESET_I(1);
     { int __Vi0=0; for (; __Vi0<256; ++__Vi0) {

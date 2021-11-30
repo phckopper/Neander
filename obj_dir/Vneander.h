@@ -48,7 +48,6 @@ VL_MODULE(Vneander) {
     CData/*0:0*/ neander__DOT__N;
     CData/*0:0*/ neander__DOT__Z;
     CData/*2:0*/ neander__DOT__STATE;
-    CData/*7:0*/ neander__DOT__cargaPC_val;
     CData/*0:0*/ neander__DOT__cargaPC;
     CData/*0:0*/ neander__DOT__incrementaPC;
     CData/*7:0*/ neander__DOT__PC__DOT__internal_PC;

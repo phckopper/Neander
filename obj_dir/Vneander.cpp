@@ -76,31 +76,38 @@ VL_INLINE_OPT void Vneander::_sequent__TOP__1(Vneander__Syms* __restrict vlSymsp
     CData/*7:0*/ __Vdly__neander__DOT__REM;
     CData/*7:0*/ __Vdly__neander__DOT__PC__DOT__internal_PC;
     // Body
+    __Vdly__neander__DOT__PC__DOT__internal_PC = vlTOPp->neander__DOT__PC__DOT__internal_PC;
     __Vdlyvset__neander__DOT__memory__v0 = 0U;
     __Vdly__neander__DOT__REM = vlTOPp->neander__DOT__REM;
-    __Vdly__neander__DOT__PC__DOT__internal_PC = vlTOPp->neander__DOT__PC__DOT__internal_PC;
-    if (vlTOPp->neander__DOT__memWrite) {
-        __Vdlyvval__neander__DOT__memory__v0 = vlTOPp->neander__DOT__RDM;
-        __Vdlyvset__neander__DOT__memory__v0 = 1U;
-        __Vdlyvdim0__neander__DOT__memory__v0 = vlTOPp->neander__DOT__REM;
-    }
     if (vlTOPp->i_rst) {
         __Vdly__neander__DOT__PC__DOT__internal_PC = 0U;
     } else {
         if (vlTOPp->neander__DOT__incrementaPC) {
             __Vdly__neander__DOT__PC__DOT__internal_PC 
-                = (0xffU & ((IData)(vlTOPp->neander__DOT__cargaPC)
-                             ? (IData)(vlTOPp->neander__DOT__cargaPC_val)
-                             : ((IData)(1U) + (IData)(vlTOPp->neander__DOT__PC__DOT__internal_PC))));
+                = (0xffU & ((IData)(1U) + (IData)(vlTOPp->neander__DOT__PC__DOT__internal_PC)));
+        } else {
+            if (vlTOPp->neander__DOT__cargaPC) {
+                __Vdly__neander__DOT__PC__DOT__internal_PC 
+                    = vlTOPp->neander__DOT__RDM;
+            }
         }
+    }
+    if (vlTOPp->neander__DOT__memWrite) {
+        __Vdlyvval__neander__DOT__memory__v0 = vlTOPp->neander__DOT__RDM;
+        __Vdlyvset__neander__DOT__memory__v0 = 1U;
+        __Vdlyvdim0__neander__DOT__memory__v0 = vlTOPp->neander__DOT__REM;
     }
     vlTOPp->neander__DOT__STATE = ((4U & (IData)(vlTOPp->neander__DOT__STATE))
                                     ? ((2U & (IData)(vlTOPp->neander__DOT__STATE))
                                         ? ((1U & (IData)(vlTOPp->neander__DOT__STATE))
                                             ? 0U : 7U)
                                         : ((1U & (IData)(vlTOPp->neander__DOT__STATE))
-                                            ? ((8U 
-                                                & (IData)(vlTOPp->neander__DOT__RI))
+                                            ? ((((8U 
+                                                  == (IData)(vlTOPp->neander__DOT__RI)) 
+                                                 | (9U 
+                                                    == (IData)(vlTOPp->neander__DOT__RI))) 
+                                                | (0xaU 
+                                                   == (IData)(vlTOPp->neander__DOT__RI)))
                                                 ? 0U
                                                 : 6U)
                                             : 5U)) : 
@@ -124,9 +131,6 @@ VL_INLINE_OPT void Vneander::_sequent__TOP__1(Vneander__Syms* __restrict vlSymsp
     }
     if (vlTOPp->neander__DOT__cargaNZ) {
         vlTOPp->neander__DOT__Z = vlTOPp->neander__DOT__ULA_Z;
-    }
-    if (vlTOPp->neander__DOT__cargaPC) {
-        vlTOPp->neander__DOT__cargaPC_val = vlTOPp->neander__DOT__RDM;
     }
     if (vlTOPp->neander__DOT__SEL) {
         if (vlTOPp->neander__DOT__cargaREM) {
@@ -188,7 +192,9 @@ VL_INLINE_OPT void Vneander::_sequent__TOP__1(Vneander__Syms* __restrict vlSymsp
         if ((1U & (~ ((IData)(vlTOPp->neander__DOT__STATE) 
                       >> 1U)))) {
             if ((1U & (IData)(vlTOPp->neander__DOT__STATE))) {
-                if ((8U & (IData)(vlTOPp->neander__DOT__RI))) {
+                if ((((8U == (IData)(vlTOPp->neander__DOT__RI)) 
+                      | (9U == (IData)(vlTOPp->neander__DOT__RI))) 
+                     | (0xaU == (IData)(vlTOPp->neander__DOT__RI)))) {
                     vlTOPp->neander__DOT__cargaPC = 1U;
                 }
             }
@@ -208,8 +214,9 @@ VL_INLINE_OPT void Vneander::_sequent__TOP__1(Vneander__Syms* __restrict vlSymsp
             }
         } else {
             if ((1U & (IData)(vlTOPp->neander__DOT__STATE))) {
-                if ((1U & (~ ((IData)(vlTOPp->neander__DOT__RI) 
-                              >> 3U)))) {
+                if ((1U & (~ (((8U == (IData)(vlTOPp->neander__DOT__RI)) 
+                               | (9U == (IData)(vlTOPp->neander__DOT__RI))) 
+                              | (0xaU == (IData)(vlTOPp->neander__DOT__RI)))))) {
                     vlTOPp->neander__DOT__cargaREM = 1U;
                 }
             } else {
@@ -236,14 +243,15 @@ VL_INLINE_OPT void Vneander::_sequent__TOP__1(Vneander__Syms* __restrict vlSymsp
     if ((4U & (IData)(vlTOPp->neander__DOT__STATE))) {
         if ((1U & (~ ((IData)(vlTOPp->neander__DOT__STATE) 
                       >> 1U)))) {
-            if ((1U & (IData)(vlTOPp->neander__DOT__STATE))) {
-                vlTOPp->neander__DOT__incrementaPC = 0U;
-            } else {
-                if ((1U & (~ ((IData)(vlTOPp->neander__DOT__RI) 
-                              >> 3U)))) {
-                    vlTOPp->neander__DOT__incrementaPC = 1U;
-                }
-            }
+            vlTOPp->neander__DOT__incrementaPC = (1U 
+                                                  & ((~ (IData)(vlTOPp->neander__DOT__STATE)) 
+                                                     & (~ 
+                                                        (((8U 
+                                                           == (IData)(vlTOPp->neander__DOT__RI)) 
+                                                          | (9U 
+                                                             == (IData)(vlTOPp->neander__DOT__RI))) 
+                                                         | (0xaU 
+                                                            == (IData)(vlTOPp->neander__DOT__RI))))));
         }
     } else {
         if ((2U & (IData)(vlTOPp->neander__DOT__STATE))) {
@@ -268,8 +276,9 @@ VL_INLINE_OPT void Vneander::_sequent__TOP__1(Vneander__Syms* __restrict vlSymsp
         if ((1U & (~ ((IData)(vlTOPp->neander__DOT__STATE) 
                       >> 1U)))) {
             if ((1U & (IData)(vlTOPp->neander__DOT__STATE))) {
-                if ((1U & (~ ((IData)(vlTOPp->neander__DOT__RI) 
-                              >> 3U)))) {
+                if ((1U & (~ (((8U == (IData)(vlTOPp->neander__DOT__RI)) 
+                               | (9U == (IData)(vlTOPp->neander__DOT__RI))) 
+                              | (0xaU == (IData)(vlTOPp->neander__DOT__RI)))))) {
                     vlTOPp->neander__DOT__SEL = 1U;
                 }
             }
@@ -345,7 +354,9 @@ VL_INLINE_OPT void Vneander::_sequent__TOP__1(Vneander__Syms* __restrict vlSymsp
     }
     if ((4U & (IData)(vlTOPp->neander__DOT__STATE))) {
         if ((2U & (IData)(vlTOPp->neander__DOT__STATE))) {
-            if ((1U & (~ (IData)(vlTOPp->neander__DOT__STATE)))) {
+            if ((1U & (IData)(vlTOPp->neander__DOT__STATE))) {
+                vlTOPp->neander__DOT__cargaRDM = 0U;
+            } else {
                 if ((1U == (IData)(vlTOPp->neander__DOT__RI))) {
                     vlTOPp->neander__DOT__cargaRDM = 1U;
                 }

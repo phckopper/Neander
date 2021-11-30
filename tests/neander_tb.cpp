@@ -33,7 +33,7 @@
 
 #include "utils.cpp"
 
-#define N_CYCLES 50
+#define N_CYCLES 100
 
 int	main(int argc, char **argv) {
 	//const std::unique_ptr<VerilatedContext> contextp{new VerilatedContext};
@@ -44,6 +44,7 @@ int	main(int argc, char **argv) {
 	// Create an instance of our module under test
 	Vneander *top = new Vneander;
 
+	// 
 	top->trace(tfp, 99);
 	tfp->open("trace.vcd");
 
@@ -55,6 +56,14 @@ int	main(int argc, char **argv) {
 	top->neander__DOT__memory[addr++] = OP_STA;
 	top->neander__DOT__memory[addr++] = 130;
 
+	top->neander__DOT__memory[addr++] = OP_JMP;
+	top->neander__DOT__memory[addr++] = 30;
+
+	top->neander__DOT__memory[30] = OP_ADD;
+	top->neander__DOT__memory[31] = 129;
+	top->neander__DOT__memory[32] = OP_STA;
+	top->neander__DOT__memory[33] = 130;
+
 	top->neander__DOT__memory[128] = 24;
 	top->neander__DOT__memory[129] = 9;
 
@@ -62,7 +71,7 @@ int	main(int argc, char **argv) {
 	{
 		tfp->dump(i);
 		printf("Cycle [%d]\n", i);
-		//dump_mem(top);
+		// dump_mem(top);
 		printf("130: %d\n", top->neander__DOT__memory[130]);
 		dump_state(top);
 		puts("-----");

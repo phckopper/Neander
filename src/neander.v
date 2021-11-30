@@ -24,7 +24,7 @@ module neander (
     input i_clk;
     input i_rst;
 
-    reg [7:0] ACC ;
+    reg [7:0] ACC;
     reg [2:0] ULA_SEL;
     wire [7:0] ULA_OUT;
 
@@ -57,12 +57,11 @@ module neander (
 
 
     reg [7:0] valorPC;
-    reg [7:0] cargaPC_val;
+    wire [7:0] cargaPC_val;
     reg cargaPC;
     reg incrementaPC;
 
-    wire isJump;
-    assign isJump = RI[3];
+    assign cargaPC_val = RDM;
 
     counter PC(.i_clk(i_clk), .i_rst(i_rst), .i_preload(cargaPC_val), .i_preload_s(cargaPC), .i_inc(incrementaPC), .o_PC(valorPC));
 
@@ -89,10 +88,6 @@ module neander (
         if(cargaNZ) begin
             Z <= ULA_Z;
             N <= ULA_N;
-        end
-
-        if(cargaPC) begin
-            cargaPC_val <= RDM;
         end
 
         if(SEL) begin
@@ -138,7 +133,7 @@ module neander (
                 STATE <= 5;
             end
             3'd5: begin
-                if (isJump) begin
+                if ((RI == OP_JMP) | (RI == OP_JN) | (RI == OP_JZ)) begin
                     STATE <= 0;
                 end else begin
                     STATE <= 6;
@@ -199,14 +194,16 @@ module neander (
             3'd4: begin
                 cargaREM = 0;
                 memRead = 1;
-                if (!isJump) begin
+                if ((RI == OP_JMP) | (RI == OP_JN) | (RI == OP_JZ)) begin
+                    incrementaPC = 0;
+                end else begin
                     incrementaPC = 1;
                 end
                 //STATE <= 5;
             end
             3'd5: begin
                 incrementaPC = 0;
-                if(isJump) begin
+                if((RI == OP_JMP) | (RI == OP_JN) | (RI == OP_JZ)) begin
                     cargaPC = 1;
                     //STATE <= 0;
                 end else begin
@@ -225,6 +222,7 @@ module neander (
                 //STATE <= 7;
             end
             3'd7: begin
+                cargaRDM = 0;
                 if(RI == OP_STA) begin
                     memWrite = 1;
                 end else begin
